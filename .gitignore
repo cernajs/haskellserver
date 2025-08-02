@@ -1,0 +1,25 @@
+# Cabal build artifacts
+dist/
+dist-newstyle/
+*.hi
+*.o
+*.dyn_o
+*.dyn_hi
+
+# Cabal sandbox (older versions)
+cabal.sandbox.config/
+cabal.sandbox.config
+
+# Binary output
+*.exe
+*.out
+*.app
+*.a
+*.so
+
+# Misc
+*.log
+*.aux
+*.hp
+*.prof
+*.eventlog
