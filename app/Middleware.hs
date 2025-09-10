@@ -2,7 +2,7 @@ module Middleware where
 
 import Types
 
-type Handler = Request -> IO Respones
+type Handler = Request -> IO Response
 
 type Middleware = Handler -> Handler
 

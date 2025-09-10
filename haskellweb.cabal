@@ -37,9 +37,6 @@ license-file:       LICENSE
 -- The package author(s).
 author:             cernajs
 
--- An email address to which users can send suggestions, bug reports, and patches.
-maintainer:         adamcerny13@icloud.com
-
 -- A copyright notice.
 -- copyright:
 build-type:         Simple
@@ -61,7 +58,13 @@ executable haskellweb
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
-    -- other-modules:
+    other-modules:    Middleware
+                      Types
+                      HTTP.Parser
+                      HTTP.Render
+                      BuiltinMiddleware
+                      Routing
+                      Server
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
@@ -69,10 +72,24 @@ executable haskellweb
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.18.3.0,
                       bytestring >= 0.10,
-                      attoparsec >= 0.13
+                      attoparsec >= 0.13,
+                      hspec,
+                      network
 
     -- Directories containing source files.
     hs-source-dirs:   app
 
     -- Base language which the package is written in.
+    default-language: Haskell2010
+
+test-suite haskellweb-test
+    import:           warnings
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Spec.hs
+    build-depends:    base ^>=4.18.3.0,
+                      bytestring >= 0.10,
+                      attoparsec >= 0.13,
+                      hspec,
+                      haskellweb
     default-language: Haskell2010
