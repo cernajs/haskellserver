@@ -3,6 +3,7 @@ module Routing
   ( routeExact
   , methodIs
   , notFound
+  , guardMethod
   ) where
 
 import qualified Data.ByteString as BS
@@ -23,3 +24,11 @@ methodIs :: BS.ByteString -> Handler -> Middleware
 methodIs m h next req =
   if method req == m then h req else next req
 
+guardMethod :: BS.ByteString -> Handler -> Handler
+guardMethod m h req =
+  if method req == m
+    then h req
+    else pure $ badRequest400 "Method Not Allowed"
+
+jsonResponse :: BS.ByteString -> Response
+jsonResponse b = addHeader ("Content-Type", "application/json") (ok200 b)
