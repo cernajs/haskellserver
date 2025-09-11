@@ -1,3 +1,4 @@
+```
 📘 HaskellWeb – Minimalistický HTTP server
 
 Jednoduchý HTTP server v Haskellu.
@@ -78,3 +79,4 @@ curl http://127.0.0.1:8080/ping
                                                                                   +-----------------+
                                                                                   | Odpověď klientu |
                                                                                   +-----------------+
+```
